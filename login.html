@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign in — Management Pro Liberia Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="portal.css">
+<style>
+  .login-tabs{
+    display:inline-flex;
+    background:var(--stone);
+    border-radius:24px;
+    padding:4px;
+    margin-bottom:30px;
+  }
+  .login-tabs button{
+    padding:8px 18px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+    color:var(--ink-soft);
+  }
+  .login-tabs button.active{ background:var(--navy); color:#fff; }
+</style>
+</head>
+<body>
+
+<div class="login-screen">
+  <div class="login-visual">
+    <a href="../management-pro-liberia.html" class="brand">
+      <img src="mpl-logo.png" alt="Management Pro Liberia shield logo" onerror="this.style.display='none'">
+      <div class="brand-text">Management Pro Liberia<span>Your Eyes on the Ground</span></div>
+    </a>
+    <div>
+      <p class="quote" id="visual-quote">Presence, <span>on your behalf.</span></p>
+      <p class="quote-meta" id="visual-meta">CLIENT PORTAL · Field reports, GPS-verified</p>
+    </div>
+  </div>
+
+  <div class="login-form-side">
+    <div class="login-box">
+      <div class="login-tabs">
+        <button type="button" class="active" id="tab-client" onclick="setMode('client')">Client Login</button>
+        <button type="button" id="tab-team" onclick="setMode('team')">Team Login</button>
+      </div>
+
+      <h1 id="form-title">Welcome back</h1>
+      <p class="sub" id="form-sub">Sign in to view your properties, reports, and inspection history.</p>
+
+      <div class="login-error" id="login-error">That email and password combination wasn't recognized. Try the demo credentials below.</div>
+
+      <form id="login-form" onsubmit="return handleLogin(event)">
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="••••••••" required>
+        </div>
+        <div class="login-row">
+          <label style="display:flex; align-items:center; gap:7px;"><input type="checkbox" style="width:auto;"> Keep me signed in</label>
+          <a href="#">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn-block" id="submit-btn">Sign in to your dashboard</button>
+      </form>
+
+      <div class="login-demo" id="demo-box">
+        Demo access — <strong>rebecca@client.mpl</strong> / any password
+      </div>
+
+      <div class="login-switch" id="switch-copy">
+        Not a client yet? <a href="../management-pro-liberia.html#contact">Get in touch</a> to set up your account.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let mode = 'client';
+
+  function setMode(next){
+    mode = next;
+    document.getElementById('tab-client').classList.toggle('active', mode === 'client');
+    document.getElementById('tab-team').classList.toggle('active', mode === 'team');
+    document.getElementById('login-error').classList.remove('show');
+
+    if(mode === 'client'){
+      document.getElementById('form-title').textContent = 'Welcome back';
+      document.getElementById('form-sub').textContent = 'Sign in to view your properties, reports, and inspection history.';
+      document.getElementById('visual-quote').innerHTML = 'Presence, <span>on your behalf.</span>';
+      document.getElementById('visual-meta').textContent = 'CLIENT PORTAL · Field reports, GPS-verified';
+      document.getElementById('demo-box').innerHTML = 'Demo access — <strong>rebecca@client.mpl</strong> / any password';
+      document.getElementById('switch-copy').innerHTML = 'Not a client yet? <a href="../management-pro-liberia.html#contact">Get in touch</a> to set up your account.';
+    } else {
+      document.getElementById('form-title').textContent = 'Field team sign in';
+      document.getElementById('form-sub').textContent = 'Log inspections, update property status, and file GPS-verified reports.';
+      document.getElementById('visual-quote').innerHTML = 'Boots on the ground, <span>logged in real time.</span>';
+      document.getElementById('visual-meta').textContent = 'TEAM PORTAL · Property tracking dashboard';
+      document.getElementById('demo-box').innerHTML = 'Demo access — <strong>team@mpl.local</strong> / any password';
+      document.getElementById('switch-copy').innerHTML = 'Client looking for your account? Use <a href="#" onclick="setMode(\'client\'); return false;">Client Login</a> instead.';
+    }
+  }
+
+  function handleLogin(e){
+    e.preventDefault();
+    const email = document.getElementById('email').value.trim().toLowerCase();
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = 'Signing in…';
+
+    setTimeout(() => {
+      if(mode === 'client'){
+        window.location.href = 'client-dashboard.html';
+      } else {
+        window.location.href = 'team-dashboard.html';
+      }
+    }, 350);
+    return false;
+  }
+</script>
+
+</body>
+</html>

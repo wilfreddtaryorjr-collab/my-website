@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Dashboard — Management Pro Liberia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="portal.css">
+</head>
+<body>
+
+<div class="portal">
+  <aside class="portal-sidebar">
+    <a href="../management-pro-liberia.html" class="brand">
+      <img src="mpl-logo.png" alt="" onerror="this.style.display='none'">
+      <div class="brand-text">Management Pro Liberia<span>Client Portal</span></div>
+    </a>
+
+    <nav class="portal-nav">
+      <a href="#overview" class="nav-link active" data-section="overview">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="3" width="8" height="5" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="11" width="8" height="10" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="13" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
+        Overview
+      </a>
+      <a href="#properties" class="nav-link" data-section="properties">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 21V10l8-6 8 6v11" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 21v-7h6v7" stroke="currentColor" stroke-width="1.6"/></svg>
+        My Properties
+      </a>
+      <a href="#reports" class="nav-link" data-section="reports">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 3h9l5 5v13H6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12h6M9 16h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        Reports &amp; Financials
+      </a>
+      <a href="#maintenance" class="nav-link" data-section="maintenance">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a3 3 0 0 1-4 4L5 16l3 3 5.7-5.7a3 3 0 0 1 4-4l-2-2-1 1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        Maintenance Logs
+      </a>
+      <a href="#gps" class="nav-link" data-section="gps">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-11.5A7 7 0 0 0 5 9.5C5 14.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+        GPS Verification
+      </a>
+      <a href="#account" class="nav-link" data-section="account">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 20c1.4-3.8 4.2-5.7 7.5-5.7s6.1 1.9 7.5 5.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        Account
+      </a>
+    </nav>
+
+    <div class="portal-sidebar-footer">
+      <div class="portal-user">
+        <div class="avatar">RJ</div>
+        <div class="who"><strong>Rebecca Johnson</strong><span>Diaspora client · Georgia, US</span></div>
+      </div>
+      <a href="login.html" class="portal-logout">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Sign out
+      </a>
+    </div>
+  </aside>
+
+  <main class="portal-main">
+
+    <!-- OVERVIEW -->
+    <section class="portal-section active" id="sec-overview">
+      <div class="portal-topbar">
+        <div>
+          <h1>Welcome back, Rebecca</h1>
+          <p>Here's what's happening across your properties this month.</p>
+        </div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="label">Properties</div>
+          <div class="value">2</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Last Verified Visit</div>
+          <div class="value">3<small> days ago</small></div>
+        </div>
+        <div class="stat-card">
+          <div class="label">August Rent Collected</div>
+          <div class="value mono">$1,450</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Open Maintenance Items</div>
+          <div class="value">1</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h3>Recent field activity</h3>
+            <p>The latest GPS-verified visits from our team</p>
+          </div>
+          <a href="#gps" class="btn-sm nav-link" data-section="gps">View map</a>
+        </div>
+        <table class="data">
+          <thead><tr><th>Property</th><th>Activity</th><th>Verified by</th><th>Date</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Sinkor Family Compound</td><td>Routine inspection &amp; photo update</td><td>J. Kollie</td><td class="mono">Aug 29, 2026</td><td><span class="badge verified">GPS Verified</span></td></tr>
+            <tr><td>RIA Road Duplex</td><td>Rent collection, tenant check-in</td><td>M. Toe</td><td class="mono">Aug 22, 2026</td><td><span class="badge verified">GPS Verified</span></td></tr>
+            <tr><td>Sinkor Family Compound</td><td>Fence repair follow-up</td><td>J. Kollie</td><td class="mono">Aug 12, 2026</td><td><span class="badge verified">GPS Verified</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- PROPERTIES -->
+    <section class="portal-section" id="sec-properties">
+      <div class="portal-topbar">
+        <div>
+          <h1>My Properties</h1>
+          <p>Properties under MPL management on your behalf.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-body" style="padding:0;">
+          <table class="data">
+            <thead><tr><th>Property</th><th>Type</th><th>Location</th><th>Last Inspection</th><th>Status</th><th></th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Sinkor Family Compound</strong></td>
+                <td>Residential compound</td>
+                <td>Sinkor, Monrovia</td>
+                <td class="mono">Aug 29, 2026</td>
+                <td><span class="badge verified">Verified</span></td>
+                <td><a href="#gps" class="btn-sm nav-link" data-section="gps">View on map</a></td>
+              </tr>
+              <tr>
+                <td><strong>RIA Road Duplex</strong></td>
+                <td>Rental duplex, 2 units</td>
+                <td>RIA Highway, Margibi County</td>
+                <td class="mono">Aug 22, 2026</td>
+                <td><span class="badge verified">Verified</span></td>
+                <td><a href="#gps" class="btn-sm nav-link" data-section="gps">View on map</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- REPORTS & FINANCIALS -->
+    <section class="portal-section" id="sec-reports">
+      <div class="portal-topbar">
+        <div>
+          <h1>Reports &amp; Financials</h1>
+          <p>Monthly statements for your properties.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div><h3>August 2026 summary — RIA Road Duplex</h3><p>Rent collected on your behalf and remitted after expenses</p></div>
+        </div>
+        <div class="panel-body">
+          <div class="fin-row"><span>Rent collected (2 units)</span><span class="amt pos">$1,450.00</span></div>
+          <div class="fin-row"><span>Property management fee (10%)</span><span class="amt neg">-$145.00</span></div>
+          <div class="fin-row"><span>Minor plumbing repair — Unit B</span><span class="amt neg">-$60.00</span></div>
+          <div class="fin-row"><span>Net remitted to you</span><span class="amt">$1,245.00</span></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div><h3>Monthly reports</h3><p>Download past statements and inspection summaries</p></div>
+        </div>
+        <table class="data">
+          <thead><tr><th>Report</th><th>Property</th><th>Period</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>Financial &amp; inspection summary</td><td>RIA Road Duplex</td><td class="mono">Aug 2026</td><td><a href="#" class="btn-sm">Download PDF</a></td></tr>
+            <tr><td>Inspection summary</td><td>Sinkor Family Compound</td><td class="mono">Aug 2026</td><td><a href="#" class="btn-sm">Download PDF</a></td></tr>
+            <tr><td>Financial &amp; inspection summary</td><td>RIA Road Duplex</td><td class="mono">Jul 2026</td><td><a href="#" class="btn-sm">Download PDF</a></td></tr>
+            <tr><td>Inspection summary</td><td>Sinkor Family Compound</td><td class="mono">Jul 2026</td><td><a href="#" class="btn-sm">Download PDF</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- MAINTENANCE -->
+    <section class="portal-section" id="sec-maintenance">
+      <div class="portal-topbar">
+        <div>
+          <h1>Maintenance Logs</h1>
+          <p>Repairs and upkeep tracked across your properties.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-body">
+          <div class="maint-item">
+            <div class="maint-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a3 3 0 0 1-4 4L5 16l3 3 5.7-5.7a3 3 0 0 1 4-4l-2-2-1 1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="maint-body">
+              <h4>Unit B kitchen sink leak</h4>
+              <p>Tenant reported a slow leak under the sink. Plumber scheduled for repair — parts already on hand.</p>
+            </div>
+            <div class="maint-meta">
+              <div class="date">RIA Road Duplex</div>
+              <span class="badge pending">In Progress</span>
+            </div>
+          </div>
+          <div class="maint-item">
+            <div class="maint-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a3 3 0 0 1-4 4L5 16l3 3 5.7-5.7a3 3 0 0 1 4-4l-2-2-1 1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="maint-body">
+              <h4>Perimeter fence repair</h4>
+              <p>Storm damage to the rear fence line was repaired and reinforced. Photos attached to the August report.</p>
+            </div>
+            <div class="maint-meta">
+              <div class="date">Aug 12, 2026 · Resolved</div>
+              <span class="badge verified">Resolved</span>
+            </div>
+          </div>
+          <div class="maint-item">
+            <div class="maint-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a3 3 0 0 1-4 4L5 16l3 3 5.7-5.7a3 3 0 0 1 4-4l-2-2-1 1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="maint-body">
+              <h4>Repaint exterior — compound</h4>
+              <p>Scheduled for the September dry-season window, pending your approval on the color estimate we sent.</p>
+            </div>
+            <div class="maint-meta">
+              <div class="date">Scheduled · Sep 2026</div>
+              <span class="badge pending">Awaiting Approval</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GPS -->
+    <section class="portal-section" id="sec-gps">
+      <div class="portal-topbar">
+        <div>
+          <h1>GPS Verification</h1>
+          <p>Every visit is logged with the coordinates and time our team arrived on site.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-body">
+          <div class="map-wrap" id="map"></div>
+          <div class="map-legend">
+            <span><i style="background:#4B7A63"></i> Verified inspection</span>
+            <span><i style="background:#BE984F"></i> Your property</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><div><h3>Verification history</h3></div></div>
+        <table class="data">
+          <thead><tr><th>Property</th><th>Coordinates</th><th>Arrived</th><th>Team member</th></tr></thead>
+          <tbody>
+            <tr><td>Sinkor Family Compound</td><td class="mono">06.3156°N, 10.8074°W</td><td class="mono">Aug 29, 2026 · 8:14 AM</td><td>J. Kollie</td></tr>
+            <tr><td>RIA Road Duplex</td><td class="mono">06.2400°N, 10.3623°W</td><td class="mono">Aug 22, 2026 · 10:02 AM</td><td>M. Toe</td></tr>
+            <tr><td>Sinkor Family Compound</td><td class="mono">06.3155°N, 10.8073°W</td><td class="mono">Aug 12, 2026 · 9:40 AM</td><td>J. Kollie</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ACCOUNT -->
+    <section class="portal-section" id="sec-account">
+      <div class="portal-topbar">
+        <div>
+          <h1>Account</h1>
+          <p>Your contact details on file with MPL.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-body">
+          <div class="fin-row"><span>Name</span><span>Rebecca Johnson</span></div>
+          <div class="fin-row"><span>Email</span><span>rebecca@client.mpl</span></div>
+          <div class="fin-row"><span>Phone</span><span class="mono">+1 (404) 555-0148</span></div>
+          <div class="fin-row"><span>Preferred contact</span><span>WhatsApp</span></div>
+          <div class="fin-row"><span>Properties managed</span><span>2</span></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+  // ---- Section navigation ----
+  const links = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.portal-section');
+
+  function showSection(name){
+    sections.forEach(s => s.classList.toggle('active', s.id === 'sec-' + name));
+    links.forEach(l => l.classList.toggle('active', l.dataset.section === name));
+    if(name === 'gps') setTimeout(() => { if(window._mplMap) window._mplMap.invalidateSize(); }, 50);
+  }
+
+  links.forEach(l => l.addEventListener('click', (e) => {
+    e.preventDefault();
+    showSection(l.dataset.section);
+    history.replaceState(null, '', '#' + l.dataset.section);
+  }));
+
+  const initial = location.hash.replace('#','') || 'overview';
+  showSection(initial);
+
+  // ---- GPS map ----
+  const map = L.map('map', { scrollWheelZoom:false }).setView([6.28, -10.6], 9);
+  window._mplMap = map;
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution:'&copy; OpenStreetMap contributors',
+    maxZoom:18
+  }).addTo(map);
+
+  const goldIcon = L.divIcon({
+    className:'',
+    html:'<div style="width:16px;height:16px;border-radius:50%;background:#BE984F;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)"></div>',
+    iconSize:[16,16], iconAnchor:[8,8]
+  });
+
+  const sites = [
+    { name:'Sinkor Family Compound', lat:6.3156, lng:-10.8074, note:'Last verified Aug 29, 2026 · 8:14 AM' },
+    { name:'RIA Road Duplex', lat:6.2400, lng:-10.3623, note:'Last verified Aug 22, 2026 · 10:02 AM' }
+  ];
+
+  sites.forEach(s => {
+    L.marker([s.lat, s.lng], { icon: goldIcon }).addTo(map)
+      .bindPopup(`<h4>${s.name}</h4>${s.note}<br><span style="color:#4B7A63;font-weight:600;">GPS Verified</span>`);
+  });
+</script>
+
+</body>
+</html>
